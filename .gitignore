@@ -1,2 +1,8 @@
 # object files
 *.o
+# generated moc-files
+moc_*.cpp
+# Make-files
+Makefile*
+# qt project user config
+*.pro.user
