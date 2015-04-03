@@ -2,12 +2,13 @@
 #define FILEINFO_H
 #include <QFileInfo>
 
-class FileInfo
+class FileInfo: public QObject
 {
+    Q_OBJECT
     QFileInfo m_fileinfo;
     QString m_md5;
 public:
-    FileInfo(const QString &aFileName): m_fileinfo(aFileName) {}
+    FileInfo(const QString &FileName): m_fileinfo(FileName) {}
     QFileInfo getFileInfo() {
         return m_fileinfo;
     }
