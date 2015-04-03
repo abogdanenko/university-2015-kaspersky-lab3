@@ -14,9 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-        fileinfo.cpp
+        fileinfo.cpp \
+    generalexception.cpp
 
 HEADERS  += mainwindow.h \
-        fileinfo.h
+        fileinfo.h \
+    generalexception.h
 
 FORMS    += mainwindow.ui
