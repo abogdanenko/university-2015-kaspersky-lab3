@@ -2,6 +2,9 @@
 #include <QStack>
 #include <QRegExp>
 #include <QDir>
+int FileBrowser::m_Version = 0x01;
+int FileBrowser::m_Year = 2015;
+
 static inline bool wildCardMatch(const QString &name, const QString &pattern) {
     QRegExp regExp(pattern, Qt::CaseSensitive, QRegExp::Wildcard);
     return regExp.exactMatch(name);
@@ -34,4 +37,8 @@ QList<FileInfo *> FileBrowser::getFileList(const QString &TargetName,
         } while (Recursive && !stack.empty());
     }
     return res;
+}
+QString FileBrowser::getInfo() {
+    return tr("File Browser V%1 \n%2 Khamitov Kamil").arg(QString::number(m_Version)
+                                                          .arg(QString::number(m_Year)));
 }
