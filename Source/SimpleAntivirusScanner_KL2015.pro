@@ -13,14 +13,12 @@ TEMPLATE = app
 QMAKE_CXXFLAGS += -std=c++11
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
+        scannermainwindow.cpp \
         fileinfo.cpp \
     generalexception.cpp \
     filebrowser.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += scannermainwindow.h \
         fileinfo.h \
     generalexception.h \
     filebrowser.h
-
-FORMS    += mainwindow.ui
