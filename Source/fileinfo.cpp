@@ -2,15 +2,26 @@
 #include <QTranslator>
 #include "fileinfo.h"
 #include "generalexception.h"
+enum {
+    BLOCK_SIZE = 8912
+};
+
+static QByteArray calcMd5(const QString &fileName) {
+    QCryptographicHash crypto(QCryptographicHash::Md5);
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly)) {
+        throw GeneralException(tr("Cant open file %1").arg(fileName));
+    }
+    while (!file.atEnd()) {
+        crypto.addData(file.read(BLOCK_SIZE));
+    }
+    file.close();
+    return crypto.result().toHex();
+}
+
 QString FileInfo::getMD5() {
     if (m_md5.isEmpty()) {
-        QFile in(m_fileinfo.absoluteFilePath());
-        if (!in.open(QIODevice::ReadOnly)) {
-            throw GeneralException(tr("Cant open file %1").arg(m_fileinfo.absoluteFilePath()));
-        }
-        QByteArray buff = in.readAll();
-        in.close();
-        m_md5 = QString(QCryptographicHash::hash(buff,QCryptographicHash::Md5));
+        m_md5 = calcMd5(m_fileinfo.absoluteFilePath());
     }
     return m_md5;
 }
