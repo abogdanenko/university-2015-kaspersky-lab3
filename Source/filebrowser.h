@@ -5,8 +5,8 @@
 class FileBrowser: public QObject
 {
     Q_OBJECT
-    static int m_Version;
-    static int m_Year;
+    Q_CLASSINFO("author", "Kamil Khamitov")
+    Q_CLASSINFO("year:", "2015")
 
 public:
     static QList<FileInfo *> getFileList(const QString &TargetName,
