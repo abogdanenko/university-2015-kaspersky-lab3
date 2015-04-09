@@ -36,6 +36,8 @@ QList<FileInfo *> FileBrowser::getFileList(const QString &TargetName,
     }
     return res;
 }
+
+
 QString FileBrowser::getInfo() {
     FileBrowser tmpobj;
     QString ver = QString(tmpobj.metaObject()->classInfo(0).name()) + ':' +  QString(tmpobj.metaObject()->classInfo(0).value());

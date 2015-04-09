@@ -1,7 +1,8 @@
 #include <QCryptographicHash>
-#include <QTranslator>
 #include "fileinfo.h"
 #include "generalexception.h"
+
+
 enum {
     BLOCK_SIZE = 8912
 };
@@ -10,7 +11,7 @@ static QByteArray calcMd5(const QString &fileName) {
     QCryptographicHash crypto(QCryptographicHash::Md5);
     QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly)) {
-        throw GeneralException(tr("Cant open file %1").arg(fileName));
+        throw GeneralException(QObject::tr("Cant open file %1").arg(fileName));
     }
     while (!file.atEnd()) {
         crypto.addData(file.read(BLOCK_SIZE));
