@@ -53,7 +53,7 @@
 \section{Приложения}
 Приложение 1. Компоненты и распределение базовой функциональности сканера за разработчиками.
 
-Распределение компонентов между разработчиками приведено в таблице \ref{table:responsibilities}.
+Распределение компонентов между разработчиками приведено в таблице \ref{table:responsibilities}, список классов и функциональность компонентов приведена в таблице \ref{table:components}.
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|p{3cm}|p{3cm}|}
@@ -67,4 +67,29 @@
 \end{tabular}
 \caption{Распределение компонентов между разработчиками}
 \label{table:responsibilities}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{25mm}|p{4cm}|l|p{4cm}|}
+\hline
+Компонент & Классы & Ветвь & Функциональность / предназначение \\
+\hline
+Графический интерфейс & - & gui & Взаимодействие с пользователем \\
+\hline
+Настройки & - & settings & Сохранение, загрузка настроек \\
+\hline
+Прочее & GeneralException & miscellaneous & Генерация исключений в пределах проекта \\
+\hline
+Обработчик вредоносных программ & MalwareInfo, MalwareHandlerPolicy, MalwareHandler & malware\_handler & Действия над вредоносными файлами \\
+\hline
+Файловый браузер & FileInfo, FileBrowser & file\_browser & Поиск файлов и директорий \\
+\hline
+Сигнатурный анализатор & SignatureAnalyzer & signature\_analyzer & Загрузка базы сигнатур из файла, поиск информации о файле в БД \\
+\hline
+Сканер & Scanner & scanner & Обеспечение доступа к остальным возможностям \\
+\hline
+\end{tabular}
+\caption{Список классов и функциональность компонентов}
+\label{table:components}
 \end{table}
