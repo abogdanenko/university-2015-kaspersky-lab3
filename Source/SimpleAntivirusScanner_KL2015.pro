@@ -18,11 +18,15 @@ SOURCES += main.cpp\
     generalexception.cpp \
     filebrowser.cpp \
     malwareinfo.cpp \
-    malwarehandler.cpp
+    malwarehandler.cpp \
+    signatureanalyzer.cpp \
+    scanner.cpp
 
 HEADERS  += scannermainwindow.h \
         fileinfo.h \
     generalexception.h \
     filebrowser.h \
     malwareinfo.h \
-    malwarehandler.h
+    malwarehandler.h \
+    signatureanalyzer.h \
+    scanner.h
