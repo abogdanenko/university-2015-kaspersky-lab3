@@ -6,3 +6,5 @@ moc_*.cpp
 Makefile*
 # qt project user config
 *.pro.user
+#build files
+build-Simple*/*
