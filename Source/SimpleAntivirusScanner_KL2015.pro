@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     scanner.cpp \
     malwareinfo.cpp \
     malwarehandler.cpp \
-    signatureanalyzer.cpp
+    signatureanalyzer.cpp \
+    scanner.cpp
 
 HEADERS  += scannermainwindow.h \
         fileinfo.h \
