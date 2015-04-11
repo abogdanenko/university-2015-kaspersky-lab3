@@ -17,7 +17,6 @@ SOURCES += main.cpp\
         fileinfo.cpp \
     generalexception.cpp \
     filebrowser.cpp \
-    scanner.cpp \
     malwareinfo.cpp \
     malwarehandler.cpp \
     signatureanalyzer.cpp \
