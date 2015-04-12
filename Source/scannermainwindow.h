@@ -2,6 +2,7 @@
 #define SCANNERMAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtWidgets>
 
 class ScannerMainWindow : public QMainWindow
 {
@@ -10,6 +11,7 @@ class ScannerMainWindow : public QMainWindow
 public:
     ScannerMainWindow(QWidget *parent = 0);
     ~ScannerMainWindow();
+    void setLayout();
 };
 
 #endif // SCANNERMAINWINDOW_H
