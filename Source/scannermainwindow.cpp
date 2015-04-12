@@ -81,5 +81,21 @@ void ScannerMainWindow::setLayout()
     topControlsHBox->addWidget(buttonWidget);
     topControlsHBox->addWidget(scanBox);
     topControlsHBox->addWidget(groupBox);
-    topControls->move(0, 20);
+    topControlsHBox->addStretch();
+    topControls->setFixedWidth(500);
+
+    QVBoxLayout *centralVBox = new QVBoxLayout();
+    QLabel *labelTarget = new QLabel(centralWidget);
+    QLabel *labelLog = new QLabel(centralWidget);
+    QTextEdit *editLog = new QTextEdit(centralWidget);
+    QLineEdit *lineEditTarget = new QLineEdit(centralWidget);
+    labelTarget->setText("File / Directory");
+    labelLog->setText("Scan log");
+    centralWidget->setLayout(centralVBox);
+    centralVBox->addWidget(menuBar);
+    centralVBox->addWidget(topControls);
+    centralVBox->addWidget(labelTarget);
+    centralVBox->addWidget(lineEditTarget);
+    centralVBox->addWidget(labelLog);
+    centralVBox->addWidget(editLog);
 }
