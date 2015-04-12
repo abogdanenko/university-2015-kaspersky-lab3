@@ -19,13 +19,19 @@ void ScannerMainWindow::setLayout()
     setCentralWidget(centralWidget);
 
     QMenuBar *menuBar = new QMenuBar(centralWidget);
+    QMenu *menuHistory = new QMenu(menuBar);
     QMenu *menuHelp = new QMenu(menuBar);
     QAction *actionAbout = new QAction(menuHelp);
+    QAction *actionClearLog = new QAction(menuHistory);
 
+    menuBar->addMenu(menuHistory);
     menuBar->addMenu(menuHelp);
     menuHelp->addAction(actionAbout);
+    menuHistory->addAction(actionClearLog);
+    menuHistory->setTitle("History");
     menuHelp->setTitle("Help");
     actionAbout->setText("About...");
+    actionClearLog->setText("Clear scan log");
 
     QWidget *buttonWidget = new QWidget(centralWidget);
     QPushButton *btnChooseFile = new QPushButton(buttonWidget);
