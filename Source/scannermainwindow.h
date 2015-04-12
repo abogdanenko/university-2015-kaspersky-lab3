@@ -11,7 +11,7 @@ class ScannerMainWindow : public QMainWindow
 public:
     ScannerMainWindow(QWidget *parent = 0);
     ~ScannerMainWindow();
-    void setLayout();
+    void initLayout();
 };
 
 #endif // SCANNERMAINWINDOW_H

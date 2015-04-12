@@ -10,7 +10,7 @@ ScannerMainWindow::~ScannerMainWindow()
 
 }
 
-void ScannerMainWindow::setLayout()
+void ScannerMainWindow::initLayout()
 {
     this->setWindowTitle("Simple Antivirus Scanner");
     this->resize(600, 400);
