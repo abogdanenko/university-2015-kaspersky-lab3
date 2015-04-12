@@ -26,4 +26,19 @@ void ScannerMainWindow::setLayout()
     menuHelp->addAction(actionAbout);
     menuHelp->setTitle("Help");
     actionAbout->setText("About...");
+
+    QWidget *buttonWidget = new QWidget(centralWidget);
+    QPushButton *btnChooseFile = new QPushButton(buttonWidget);
+    QPushButton *btnChooseDir = new QPushButton(buttonWidget);
+    QPushButton *btnStart = new QPushButton(buttonWidget);
+    QVBoxLayout *buttonVBox = new QVBoxLayout();
+    btnChooseFile->setText("Choose File");
+    btnChooseDir->setText("Choose Directory");
+    btnStart->setText("Start");
+    buttonWidget->setLayout(buttonVBox);
+    buttonVBox->addWidget(btnChooseFile);
+    buttonVBox->addWidget(btnChooseDir);
+    buttonVBox->addWidget(btnStart);
+    buttonWidget->move(0, 20);
+    buttonWidget->resize(170, 120);
 }
