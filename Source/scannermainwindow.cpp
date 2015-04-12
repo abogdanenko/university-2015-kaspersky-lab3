@@ -39,8 +39,6 @@ void ScannerMainWindow::setLayout()
     buttonVBox->addWidget(btnChooseFile);
     buttonVBox->addWidget(btnChooseDir);
     buttonVBox->addWidget(btnStart);
-    buttonWidget->move(0, 20);
-    buttonWidget->resize(170, 120);
 
     QGroupBox *groupBox = new QGroupBox(centralWidget);
     groupBox->setTitle("Action");
@@ -61,9 +59,6 @@ void ScannerMainWindow::setLayout()
     radioVBox->addWidget(radioIgnore);
     radioVBox->addWidget(radioDelete);
 
-    groupBox->move(200, 20);
-    groupBox->resize(100, 120);
-
     QGroupBox *scanBox = new QGroupBox(centralWidget);
     QVBoxLayout *scanVBox = new QVBoxLayout();
     QLabel *label = new QLabel(scanBox);
@@ -80,6 +75,11 @@ void ScannerMainWindow::setLayout()
     scanVBox->addWidget(lineEdit);
     scanVBox->addWidget(recursiveBox);
 
-    scanBox->move(350, 20);
-    scanBox->resize(250, 120);
+    QWidget *topControls = new QWidget(centralWidget);
+    QHBoxLayout *topControlsHBox = new QHBoxLayout();
+    topControls->setLayout(topControlsHBox);
+    topControlsHBox->addWidget(buttonWidget);
+    topControlsHBox->addWidget(scanBox);
+    topControlsHBox->addWidget(groupBox);
+    topControls->move(0, 20);
 }
