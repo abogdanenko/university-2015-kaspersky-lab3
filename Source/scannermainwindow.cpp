@@ -20,17 +20,23 @@ void ScannerMainWindow::setLayout()
 
     QMenuBar *menuBar = new QMenuBar(centralWidget);
     QMenu *menuHistory = new QMenu(menuBar);
+    QMenu *menuRecent = new QMenu(menuHistory);
     QMenu *menuHelp = new QMenu(menuBar);
     QAction *actionAbout = new QAction(menuHelp);
+    QAction *actionClearHistory = new QAction(menuHistory);
     QAction *actionClearLog = new QAction(menuHistory);
 
     menuBar->addMenu(menuHistory);
     menuBar->addMenu(menuHelp);
     menuHelp->addAction(actionAbout);
+    menuHistory->addMenu(menuRecent);
+    menuHistory->addAction(actionClearHistory);
     menuHistory->addAction(actionClearLog);
     menuHistory->setTitle("History");
+    menuRecent->setTitle("Recent");
     menuHelp->setTitle("Help");
     actionAbout->setText("About...");
+    actionClearHistory->setText("Clear scan history");
     actionClearLog->setText("Clear scan log");
 
     QWidget *buttonWidget = new QWidget(centralWidget);
