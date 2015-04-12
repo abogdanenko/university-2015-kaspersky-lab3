@@ -41,4 +41,26 @@ void ScannerMainWindow::setLayout()
     buttonVBox->addWidget(btnStart);
     buttonWidget->move(0, 20);
     buttonWidget->resize(170, 120);
+
+    QGroupBox *groupBox = new QGroupBox(centralWidget);
+    groupBox->setTitle("Action");
+    QVBoxLayout *radioVBox = new QVBoxLayout();
+    groupBox->setLayout(radioVBox);
+
+    QRadioButton *radioAsk = new QRadioButton(groupBox);
+    QRadioButton *radioIgnore = new QRadioButton(groupBox);
+    QRadioButton *radioDelete = new QRadioButton(groupBox);
+
+    radioAsk->setText("Ask");
+    radioIgnore->setText("Ignore");
+    radioDelete->setText("Delete");
+
+    radioAsk->setChecked(true);
+
+    radioVBox->addWidget(radioAsk);
+    radioVBox->addWidget(radioIgnore);
+    radioVBox->addWidget(radioDelete);
+
+    groupBox->move(200, 20);
+    groupBox->resize(100, 120);
 }
