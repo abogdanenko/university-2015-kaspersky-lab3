@@ -143,6 +143,5 @@ void ScannerMainWindow::initCentralWidget()
 void ScannerMainWindow::initLayout()
 {
     setWindowTitle("Simple Antivirus Scanner");
-    resize(600, 400);
     initCentralWidget();
 }
