@@ -8,6 +8,44 @@ class ScannerMainWindow : public QMainWindow
 {
     Q_OBJECT
 
+    QMenuBar *menuBar;
+    QMenu *menuHistory;
+    QMenu *menuRecent;
+    QMenu *menuHelp;
+    QAction *actionAbout;
+    QAction *actionClearHistory;
+    QAction *actionClearLog;
+
+    QWidget *buttonWidget;
+    QPushButton *btnChooseFile;
+    QPushButton *btnChooseDir;
+    QPushButton *btnStart;
+
+    QGroupBox *actionBox;
+    QRadioButton *radioAsk;
+    QRadioButton *radioIgnore;
+    QRadioButton *radioDelete;
+
+    QGroupBox *optionsBox;
+    QLineEdit *extensionEdit;
+    QCheckBox *recursiveBox;
+
+    QWidget *topControls;
+
+    QLabel *labelPath;
+    QLabel *labelLog;
+    QLineEdit *editPath;
+    QTextEdit *editLog;
+
+    QWidget *centralWidget;
+
+    void initMenu();
+    void initButtons();
+    void initOptions();
+    void initAction();
+    void initTopControls();
+    void initBottomWidgets();
+    void initCentralWidget();
 public:
     ScannerMainWindow(QWidget *parent = 0);
     ~ScannerMainWindow();

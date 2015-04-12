@@ -10,104 +10,139 @@ ScannerMainWindow::~ScannerMainWindow()
 
 }
 
-void ScannerMainWindow::initLayout()
+void ScannerMainWindow::initMenu()
 {
-    this->setWindowTitle("Simple Antivirus Scanner");
-    this->resize(600, 400);
-
-    QWidget *centralWidget = new QWidget(this);
-    setCentralWidget(centralWidget);
-
-    QMenuBar *menuBar = new QMenuBar(centralWidget);
-    QMenu *menuHistory = new QMenu(menuBar);
-    QMenu *menuRecent = new QMenu(menuHistory);
-    QMenu *menuHelp = new QMenu(menuBar);
-    QAction *actionAbout = new QAction(menuHelp);
-    QAction *actionClearHistory = new QAction(menuHistory);
-    QAction *actionClearLog = new QAction(menuHistory);
+    menuBar = new QMenuBar(centralWidget);
+    menuHistory = new QMenu(centralWidget);
+    menuRecent = new QMenu(centralWidget);
+    menuHelp = new QMenu(centralWidget);
+    actionClearHistory = new QAction(centralWidget);
+    actionClearLog = new QAction(centralWidget);
+    actionAbout = new QAction(centralWidget);
 
     menuBar->addMenu(menuHistory);
     menuBar->addMenu(menuHelp);
-    menuHelp->addAction(actionAbout);
     menuHistory->addMenu(menuRecent);
     menuHistory->addAction(actionClearHistory);
     menuHistory->addAction(actionClearLog);
+    menuHelp->addAction(actionAbout);
+
     menuHistory->setTitle("History");
     menuRecent->setTitle("Recent");
     menuHelp->setTitle("Help");
-    actionAbout->setText("About...");
     actionClearHistory->setText("Clear scan history");
     actionClearLog->setText("Clear scan log");
+    actionAbout->setText("About...");
+}
 
-    QWidget *buttonWidget = new QWidget(centralWidget);
-    QPushButton *btnChooseFile = new QPushButton(buttonWidget);
-    QPushButton *btnChooseDir = new QPushButton(buttonWidget);
-    QPushButton *btnStart = new QPushButton(buttonWidget);
-    QVBoxLayout *buttonVBox = new QVBoxLayout();
+
+void ScannerMainWindow::initButtons()
+{
+    buttonWidget = new QWidget(topControls);
+    btnChooseFile = new QPushButton(buttonWidget);
+    btnChooseDir = new QPushButton(buttonWidget);
+    btnStart = new QPushButton(buttonWidget);
+    QVBoxLayout *vbox = new QVBoxLayout();
+
     btnChooseFile->setText("Choose File");
     btnChooseDir->setText("Choose Directory");
     btnStart->setText("Start");
-    buttonWidget->setLayout(buttonVBox);
-    buttonVBox->addWidget(btnChooseFile);
-    buttonVBox->addWidget(btnChooseDir);
-    buttonVBox->addWidget(btnStart);
 
-    QGroupBox *groupBox = new QGroupBox(centralWidget);
-    groupBox->setTitle("Action");
-    QVBoxLayout *radioVBox = new QVBoxLayout();
-    groupBox->setLayout(radioVBox);
+    buttonWidget->setLayout(vbox);
+    vbox->addWidget(btnChooseFile);
+    vbox->addWidget(btnChooseDir);
+    vbox->addWidget(btnStart);
+}
 
-    QRadioButton *radioAsk = new QRadioButton(groupBox);
-    QRadioButton *radioIgnore = new QRadioButton(groupBox);
-    QRadioButton *radioDelete = new QRadioButton(groupBox);
+void ScannerMainWindow::initOptions()
+{
+    optionsBox = new QGroupBox(topControls);
+    QVBoxLayout *vbox = new QVBoxLayout();
+    QLabel *label = new QLabel(optionsBox);
+    extensionEdit = new QLineEdit(optionsBox);
+    recursiveBox = new QCheckBox(optionsBox);
 
+    optionsBox->setTitle("Scan Options");
+    label->setText("Filter by extension");
+    extensionEdit->setText("*.*");
+    recursiveBox->setText("Scan subdirectories recursively");
+
+    optionsBox->setLayout(vbox);
+    vbox->addWidget(label);
+    vbox->addWidget(extensionEdit);
+    vbox->addWidget(recursiveBox);
+}
+
+void ScannerMainWindow::initAction()
+{
+    actionBox = new QGroupBox(topControls);
+    QVBoxLayout *vbox = new QVBoxLayout();
+    radioAsk = new QRadioButton(actionBox);
+    radioIgnore = new QRadioButton(actionBox);
+    radioDelete = new QRadioButton(actionBox);
+
+    actionBox->setTitle("Action");
     radioAsk->setText("Ask");
     radioIgnore->setText("Ignore");
     radioDelete->setText("Delete");
 
+    actionBox->setLayout(vbox);
+    vbox->addWidget(radioAsk);
+    vbox->addWidget(radioIgnore);
+    vbox->addWidget(radioDelete);
+
     radioAsk->setChecked(true);
+}
 
-    radioVBox->addWidget(radioAsk);
-    radioVBox->addWidget(radioIgnore);
-    radioVBox->addWidget(radioDelete);
+void ScannerMainWindow::initTopControls()
+{
+    topControls = new QWidget(centralWidget);
 
-    QGroupBox *scanBox = new QGroupBox(centralWidget);
-    QVBoxLayout *scanVBox = new QVBoxLayout();
-    QLabel *label = new QLabel(scanBox);
-    QLineEdit *lineEdit = new QLineEdit(scanBox);
-    QCheckBox *recursiveBox = new QCheckBox(scanBox);
+    initButtons();
+    initOptions();
+    initAction();
 
-    scanBox->setTitle("Scan Options");
-    label->setText("Filter by extension");
-    lineEdit->setText("*.*");
-    recursiveBox->setText("Scan subdirectories recursively");
-
-    scanBox->setLayout(scanVBox);
-    scanVBox->addWidget(label);
-    scanVBox->addWidget(lineEdit);
-    scanVBox->addWidget(recursiveBox);
-
-    QWidget *topControls = new QWidget(centralWidget);
-    QHBoxLayout *topControlsHBox = new QHBoxLayout();
-    topControls->setLayout(topControlsHBox);
-    topControlsHBox->addWidget(buttonWidget);
-    topControlsHBox->addWidget(scanBox);
-    topControlsHBox->addWidget(groupBox);
-    topControlsHBox->addStretch();
+    QHBoxLayout *hbox = new QHBoxLayout();
+    topControls->setLayout(hbox);
+    hbox->addWidget(buttonWidget);
+    hbox->addWidget(optionsBox);
+    hbox->addWidget(actionBox);
+    hbox->addStretch();
     topControls->setFixedWidth(500);
+}
 
-    QVBoxLayout *centralVBox = new QVBoxLayout();
-    QLabel *labelTarget = new QLabel(centralWidget);
-    QLabel *labelLog = new QLabel(centralWidget);
-    QTextEdit *editLog = new QTextEdit(centralWidget);
-    QLineEdit *lineEditTarget = new QLineEdit(centralWidget);
-    labelTarget->setText("File / Directory");
+void ScannerMainWindow::initBottomWidgets()
+{
+    labelPath = new QLabel(centralWidget);
+    labelLog = new QLabel(centralWidget);
+    editPath = new QLineEdit(centralWidget);
+    editLog = new QTextEdit(centralWidget);
+    labelPath->setText("File / Directory");
     labelLog->setText("Scan log");
-    centralWidget->setLayout(centralVBox);
-    centralVBox->addWidget(menuBar);
-    centralVBox->addWidget(topControls);
-    centralVBox->addWidget(labelTarget);
-    centralVBox->addWidget(lineEditTarget);
-    centralVBox->addWidget(labelLog);
-    centralVBox->addWidget(editLog);
+}
+
+void ScannerMainWindow::initCentralWidget()
+{
+    centralWidget = new QWidget(this);
+    setCentralWidget(centralWidget);
+
+    initMenu();
+    initTopControls();
+    initBottomWidgets();
+
+    QVBoxLayout *vbox = new QVBoxLayout();
+    centralWidget->setLayout(vbox);
+    vbox->addWidget(menuBar);
+    vbox->addWidget(topControls);
+    vbox->addWidget(labelPath);
+    vbox->addWidget(editPath);
+    vbox->addWidget(labelLog);
+    vbox->addWidget(editLog);
+}
+
+void ScannerMainWindow::initLayout()
+{
+    setWindowTitle("Simple Antivirus Scanner");
+    resize(600, 400);
+    initCentralWidget();
 }
