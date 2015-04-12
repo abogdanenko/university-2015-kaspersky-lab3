@@ -63,4 +63,23 @@ void ScannerMainWindow::setLayout()
 
     groupBox->move(200, 20);
     groupBox->resize(100, 120);
+
+    QGroupBox *scanBox = new QGroupBox(centralWidget);
+    QVBoxLayout *scanVBox = new QVBoxLayout();
+    QLabel *label = new QLabel(scanBox);
+    QLineEdit *lineEdit = new QLineEdit(scanBox);
+    QCheckBox *recursiveBox = new QCheckBox(scanBox);
+
+    scanBox->setTitle("Scan Options");
+    label->setText("Filter by extension");
+    lineEdit->setText("*.*");
+    recursiveBox->setText("Scan subdirectories recursively");
+
+    scanBox->setLayout(scanVBox);
+    scanVBox->addWidget(label);
+    scanVBox->addWidget(lineEdit);
+    scanVBox->addWidget(recursiveBox);
+
+    scanBox->move(350, 20);
+    scanBox->resize(250, 120);
 }
