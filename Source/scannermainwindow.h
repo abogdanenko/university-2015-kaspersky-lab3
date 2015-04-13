@@ -18,7 +18,7 @@ class ScannerMainWindow : public QMainWindow
 
     QWidget *buttonWidget;
     QPushButton *btnSelectFile;
-    QPushButton *btnChooseDir;
+    QPushButton *btnSelectFolder;
     QPushButton *btnStart;
 
     QGroupBox *actionBox;
