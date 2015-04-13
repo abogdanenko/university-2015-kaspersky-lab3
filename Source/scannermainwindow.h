@@ -48,6 +48,7 @@ class ScannerMainWindow : public QMainWindow
     void initCentralWidget();
 
 public slots:
+    void mnuAboutTriggered();
 
 public:
     ScannerMainWindow(QWidget *parent = 0);

@@ -148,5 +148,23 @@ void ScannerMainWindow::initLayout()
 
 void ScannerMainWindow::Connect()
 {
+    connect(actionAbout, SIGNAL(triggered()), this, SLOT(mnuAboutTriggered()));
+}
 
+void ScannerMainWindow::mnuAboutTriggered()
+{
+    QMessageBox msg;
+    QString s;
+    s = "Проект SimpleAntivirusScanner_KL2015 выполнен в рамках спецкурса"
+        " Лаборатории Касперского \"Командная разработка кроссплатформенных"
+        " приложений\"."
+        "\n"
+        "\n"
+        "Авторы: Богданенко Алексей, Хамитов Камиль"
+        "\n"
+        "\n"
+        "Апрель 2015";
+
+    msg.setText(s);
+    msg.exec();
 }
