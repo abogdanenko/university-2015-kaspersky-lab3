@@ -145,3 +145,8 @@ void ScannerMainWindow::initLayout()
     setWindowTitle("Simple Antivirus Scanner");
     initCentralWidget();
 }
+
+void ScannerMainWindow::Connect()
+{
+
+}

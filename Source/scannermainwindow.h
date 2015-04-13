@@ -46,10 +46,14 @@ class ScannerMainWindow : public QMainWindow
     void initTopControls();
     void initBottomWidgets();
     void initCentralWidget();
+
+public slots:
+
 public:
     ScannerMainWindow(QWidget *parent = 0);
     ~ScannerMainWindow();
     void initLayout();
+    void Connect();
 };
 
 #endif // SCANNERMAINWINDOW_H
