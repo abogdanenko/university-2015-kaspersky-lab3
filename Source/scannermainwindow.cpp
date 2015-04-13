@@ -94,7 +94,7 @@ void ScannerMainWindow::initAction()
     rdoAsk->setChecked(true);
 }
 
-void ScannerMainWindow::initTopControls()
+void ScannerMainWindow::initTopWidget()
 {
     wgtTop = new QWidget(centralWidget);
 
@@ -127,7 +127,7 @@ void ScannerMainWindow::initCentralWidget()
     setCentralWidget(centralWidget);
 
     initMenu();
-    initTopControls();
+    initTopWidget();
     initBottomWidgets();
 
     QVBoxLayout *vbox = new QVBoxLayout();

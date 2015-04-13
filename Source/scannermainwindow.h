@@ -43,7 +43,7 @@ class ScannerMainWindow : public QMainWindow
     void initButtons();
     void initOptions();
     void initAction();
-    void initTopControls();
+    void initTopWidget();
     void initBottomWidgets();
     void initCentralWidget();
 
