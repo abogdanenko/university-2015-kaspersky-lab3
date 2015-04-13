@@ -9,7 +9,7 @@ class ScannerMainWindow : public QMainWindow
     Q_OBJECT
 
     QMenuBar *mnuBar;
-    QMenu *menuHistory;
+    QMenu *mnuHistory;
     QMenu *menuRecent;
     QMenu *mnuHelp;
     QAction *actionAbout;
