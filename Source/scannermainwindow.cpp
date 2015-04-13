@@ -60,17 +60,17 @@ void ScannerMainWindow::initOptions()
     QVBoxLayout *vbox = new QVBoxLayout();
     QLabel *lblExtensions = new QLabel(optionsBox);
     extensionEdit = new QLineEdit(optionsBox);
-    recursiveBox = new QCheckBox(optionsBox);
+    chkRecursive = new QCheckBox(optionsBox);
 
     optionsBox->setTitle("Scan Options");
     lblExtensions->setText("Filter by extension");
     extensionEdit->setText("*.*");
-    recursiveBox->setText("Scan subdirectories recursively");
+    chkRecursive->setText("Scan subdirectories recursively");
 
     optionsBox->setLayout(vbox);
     vbox->addWidget(lblExtensions);
     vbox->addWidget(extensionEdit);
-    vbox->addWidget(recursiveBox);
+    vbox->addWidget(chkRecursive);
 }
 
 void ScannerMainWindow::initAction()

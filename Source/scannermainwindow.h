@@ -28,7 +28,7 @@ class ScannerMainWindow : public QMainWindow
 
     QGroupBox *optionsBox;
     QLineEdit *extensionEdit;
-    QCheckBox *recursiveBox;
+    QCheckBox *chkRecursive;
 
     QWidget *topControls;
 
