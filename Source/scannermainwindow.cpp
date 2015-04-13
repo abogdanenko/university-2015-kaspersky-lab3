@@ -113,11 +113,11 @@ void ScannerMainWindow::initTopControls()
 
 void ScannerMainWindow::initBottomWidgets()
 {
-    labelPath = new QLabel(centralWidget);
+    lblFileName = new QLabel(centralWidget);
     labelLog = new QLabel(centralWidget);
     editPath = new QLineEdit(centralWidget);
     editLog = new QTextEdit(centralWidget);
-    labelPath->setText("File / Directory");
+    lblFileName->setText("File / Directory");
     labelLog->setText("Scan log");
 }
 
@@ -134,7 +134,7 @@ void ScannerMainWindow::initCentralWidget()
     centralWidget->setLayout(vbox);
     vbox->addWidget(mnuBar);
     vbox->addWidget(topControls);
-    vbox->addWidget(labelPath);
+    vbox->addWidget(lblFileName);
     vbox->addWidget(editPath);
     vbox->addWidget(labelLog);
     vbox->addWidget(editLog);
