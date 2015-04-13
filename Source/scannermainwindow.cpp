@@ -77,21 +77,21 @@ void ScannerMainWindow::initAction()
 {
     actionBox = new QGroupBox(topControls);
     QVBoxLayout *vbox = new QVBoxLayout();
-    radioAsk = new QRadioButton(actionBox);
-    radioIgnore = new QRadioButton(actionBox);
-    radioDelete = new QRadioButton(actionBox);
+    rdoAsk = new QRadioButton(actionBox);
+    rdoIgnore = new QRadioButton(actionBox);
+    rdoDelete = new QRadioButton(actionBox);
 
     actionBox->setTitle("Action");
-    radioAsk->setText("Ask");
-    radioIgnore->setText("Ignore");
-    radioDelete->setText("Delete");
+    rdoAsk->setText("Ask");
+    rdoIgnore->setText("Ignore");
+    rdoDelete->setText("Delete");
 
     actionBox->setLayout(vbox);
-    vbox->addWidget(radioAsk);
-    vbox->addWidget(radioIgnore);
-    vbox->addWidget(radioDelete);
+    vbox->addWidget(rdoAsk);
+    vbox->addWidget(rdoIgnore);
+    vbox->addWidget(rdoDelete);
 
-    radioAsk->setChecked(true);
+    rdoAsk->setChecked(true);
 }
 
 void ScannerMainWindow::initTopControls()
