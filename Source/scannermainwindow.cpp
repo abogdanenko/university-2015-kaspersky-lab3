@@ -41,17 +41,17 @@ void ScannerMainWindow::initButtons()
     buttonWidget = new QWidget(topControls);
     btnSelectFile = new QPushButton(buttonWidget);
     btnSelectFolder = new QPushButton(buttonWidget);
-    btnStart = new QPushButton(buttonWidget);
+    btnCheck = new QPushButton(buttonWidget);
     QVBoxLayout *vbox = new QVBoxLayout();
 
     btnSelectFile->setText("Select File");
     btnSelectFolder->setText("Select Directory");
-    btnStart->setText("Start");
+    btnCheck->setText("Start");
 
     buttonWidget->setLayout(vbox);
     vbox->addWidget(btnSelectFile);
     vbox->addWidget(btnSelectFolder);
-    vbox->addWidget(btnStart);
+    vbox->addWidget(btnCheck);
 }
 
 void ScannerMainWindow::initOptions()
