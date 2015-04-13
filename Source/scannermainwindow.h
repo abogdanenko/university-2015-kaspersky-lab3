@@ -30,7 +30,7 @@ class ScannerMainWindow : public QMainWindow
     QLineEdit *edtExtensions;
     QCheckBox *chkRecursive;
 
-    QWidget *topControls;
+    QWidget *wgtTop;
 
     QLabel *lblFileName;
     QLabel *lblLog;

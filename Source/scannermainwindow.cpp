@@ -38,7 +38,7 @@ void ScannerMainWindow::initMenu()
 
 void ScannerMainWindow::initButtons()
 {
-    wgtButtons = new QWidget(topControls);
+    wgtButtons = new QWidget(wgtTop);
     btnSelectFile = new QPushButton(wgtButtons);
     btnSelectFolder = new QPushButton(wgtButtons);
     btnCheck = new QPushButton(wgtButtons);
@@ -56,7 +56,7 @@ void ScannerMainWindow::initButtons()
 
 void ScannerMainWindow::initOptions()
 {
-    gbxOptions = new QGroupBox(topControls);
+    gbxOptions = new QGroupBox(wgtTop);
     QVBoxLayout *vbox = new QVBoxLayout();
     QLabel *lblExtensions = new QLabel(gbxOptions);
     edtExtensions = new QLineEdit(gbxOptions);
@@ -75,7 +75,7 @@ void ScannerMainWindow::initOptions()
 
 void ScannerMainWindow::initAction()
 {
-    gbxActions = new QGroupBox(topControls);
+    gbxActions = new QGroupBox(wgtTop);
     QVBoxLayout *vbox = new QVBoxLayout();
     rdoAsk = new QRadioButton(gbxActions);
     rdoIgnore = new QRadioButton(gbxActions);
@@ -96,19 +96,19 @@ void ScannerMainWindow::initAction()
 
 void ScannerMainWindow::initTopControls()
 {
-    topControls = new QWidget(centralWidget);
+    wgtTop = new QWidget(centralWidget);
 
     initButtons();
     initOptions();
     initAction();
 
     QHBoxLayout *hbox = new QHBoxLayout();
-    topControls->setLayout(hbox);
+    wgtTop->setLayout(hbox);
     hbox->addWidget(wgtButtons);
     hbox->addWidget(gbxOptions);
     hbox->addWidget(gbxActions);
     hbox->addStretch();
-    topControls->setFixedWidth(500);
+    wgtTop->setFixedWidth(500);
 }
 
 void ScannerMainWindow::initBottomWidgets()
@@ -133,7 +133,7 @@ void ScannerMainWindow::initCentralWidget()
     QVBoxLayout *vbox = new QVBoxLayout();
     centralWidget->setLayout(vbox);
     vbox->addWidget(mnuBar);
-    vbox->addWidget(topControls);
+    vbox->addWidget(wgtTop);
     vbox->addWidget(lblFileName);
     vbox->addWidget(edtFileName);
     vbox->addWidget(lblLog);
