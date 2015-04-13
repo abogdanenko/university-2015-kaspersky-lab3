@@ -34,7 +34,7 @@ class ScannerMainWindow : public QMainWindow
 
     QLabel *lblFileName;
     QLabel *lblLog;
-    QLineEdit *editPath;
+    QLineEdit *edtFileName;
     QTextEdit *editLog;
 
     QWidget *centralWidget;

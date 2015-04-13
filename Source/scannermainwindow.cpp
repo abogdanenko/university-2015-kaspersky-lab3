@@ -115,7 +115,7 @@ void ScannerMainWindow::initBottomWidgets()
 {
     lblFileName = new QLabel(centralWidget);
     lblLog = new QLabel(centralWidget);
-    editPath = new QLineEdit(centralWidget);
+    edtFileName = new QLineEdit(centralWidget);
     editLog = new QTextEdit(centralWidget);
     lblFileName->setText("File / Directory");
     lblLog->setText("Scan log");
@@ -135,7 +135,7 @@ void ScannerMainWindow::initCentralWidget()
     vbox->addWidget(mnuBar);
     vbox->addWidget(topControls);
     vbox->addWidget(lblFileName);
-    vbox->addWidget(editPath);
+    vbox->addWidget(edtFileName);
     vbox->addWidget(lblLog);
     vbox->addWidget(editLog);
 }
@@ -191,7 +191,7 @@ void ScannerMainWindow::onSelectFile()
     if (dialog.exec()) {
         QStringList filenames = dialog.selectedFiles();
         QString filename = filenames[0];
-        editPath->setText(filename);
+        edtFileName->setText(filename);
     }
 }
 
@@ -205,6 +205,6 @@ void ScannerMainWindow::onSelectFolder()
     if (dialog.exec()) {
         QStringList filenames = dialog.selectedFiles();
         QString filename = filenames[0];
-        editPath->setText(filename);
+        edtFileName->setText(filename);
     }
 }
