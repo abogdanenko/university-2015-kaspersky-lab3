@@ -44,8 +44,8 @@ void ScannerMainWindow::initButtons()
     btnStart = new QPushButton(buttonWidget);
     QVBoxLayout *vbox = new QVBoxLayout();
 
-    btnSelectFile->setText("Choose File");
-    btnSelectFolder->setText("Choose Directory");
+    btnSelectFile->setText("Select File");
+    btnSelectFolder->setText("Select Directory");
     btnStart->setText("Start");
 
     buttonWidget->setLayout(vbox);
