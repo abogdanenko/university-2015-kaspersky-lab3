@@ -12,7 +12,7 @@ ScannerMainWindow::~ScannerMainWindow()
 
 void ScannerMainWindow::initMenu()
 {
-    menuBar = new QMenuBar(centralWidget);
+    mnuBar = new QMenuBar(centralWidget);
     menuHistory = new QMenu(centralWidget);
     menuRecent = new QMenu(centralWidget);
     menuHelp = new QMenu(centralWidget);
@@ -20,8 +20,8 @@ void ScannerMainWindow::initMenu()
     actionClearLog = new QAction(centralWidget);
     actionAbout = new QAction(centralWidget);
 
-    menuBar->addMenu(menuHistory);
-    menuBar->addMenu(menuHelp);
+    mnuBar->addMenu(menuHistory);
+    mnuBar->addMenu(menuHelp);
     menuHistory->addMenu(menuRecent);
     menuHistory->addAction(actionClearHistory);
     menuHistory->addAction(actionClearLog);
@@ -132,7 +132,7 @@ void ScannerMainWindow::initCentralWidget()
 
     QVBoxLayout *vbox = new QVBoxLayout();
     centralWidget->setLayout(vbox);
-    vbox->addWidget(menuBar);
+    vbox->addWidget(mnuBar);
     vbox->addWidget(topControls);
     vbox->addWidget(labelPath);
     vbox->addWidget(editPath);
