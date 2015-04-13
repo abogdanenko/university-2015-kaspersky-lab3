@@ -151,6 +151,7 @@ void ScannerMainWindow::Connect()
     connect(actionAbout, SIGNAL(triggered()), this, SLOT(mnuAboutTriggered()));
     connect(actionClearLog, SIGNAL(triggered()), editLog, SLOT(clear()));
     connect(btnChooseFile, SIGNAL(clicked()), this, SLOT(onSelectFile()));
+    connect(btnChooseDir, SIGNAL(clicked()), this, SLOT(onSelectFolder()));
 }
 
 void ScannerMainWindow::mnuAboutTriggered()
@@ -186,6 +187,20 @@ void ScannerMainWindow::onSelectFile()
     dialog.setFileMode(QFileDialog::ExistingFile);
     dialog.setDirectory(QDir::homePath());
     dialog.setNameFilters(filters);
+
+    if (dialog.exec()) {
+        QStringList filenames = dialog.selectedFiles();
+        QString filename = filenames[0];
+        editPath->setText(filename);
+    }
+}
+
+void ScannerMainWindow::onSelectFolder()
+{
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::Directory);
+    dialog.setDirectory(QDir::homePath());
+    dialog.setOption(QFileDialog::ShowDirsOnly, true);
 
     if (dialog.exec()) {
         QStringList filenames = dialog.selectedFiles();
