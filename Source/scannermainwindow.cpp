@@ -18,21 +18,21 @@ void ScannerMainWindow::initMenu()
     mnuHelp = new QMenu(centralWidget);
     actionClearHistory = new QAction(centralWidget);
     actionClearLog = new QAction(centralWidget);
-    actionAbout = new QAction(centralWidget);
+    actAbout = new QAction(centralWidget);
 
     mnuBar->addMenu(mnuHistory);
     mnuBar->addMenu(mnuHelp);
     mnuHistory->addMenu(mnuRecent);
     mnuHistory->addAction(actionClearHistory);
     mnuHistory->addAction(actionClearLog);
-    mnuHelp->addAction(actionAbout);
+    mnuHelp->addAction(actAbout);
 
     mnuHistory->setTitle("History");
     mnuRecent->setTitle("Recent");
     mnuHelp->setTitle("Help");
     actionClearHistory->setText("Clear scan history");
     actionClearLog->setText("Clear scan log");
-    actionAbout->setText("About...");
+    actAbout->setText("About...");
 }
 
 
@@ -148,7 +148,7 @@ void ScannerMainWindow::initLayout()
 
 void ScannerMainWindow::Connect()
 {
-    connect(actionAbout, SIGNAL(triggered()), this, SLOT(mnuAboutTriggered()));
+    connect(actAbout, SIGNAL(triggered()), this, SLOT(mnuAboutTriggered()));
     connect(actionClearLog, SIGNAL(triggered()), edtLog, SLOT(clear()));
     connect(btnSelectFile, SIGNAL(clicked()), this, SLOT(onSelectFile()));
     connect(btnSelectFolder, SIGNAL(clicked()), this, SLOT(onSelectFolder()));
