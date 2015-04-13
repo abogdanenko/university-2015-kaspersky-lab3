@@ -150,6 +150,7 @@ void ScannerMainWindow::Connect()
 {
     connect(actionAbout, SIGNAL(triggered()), this, SLOT(mnuAboutTriggered()));
     connect(actionClearLog, SIGNAL(triggered()), editLog, SLOT(clear()));
+    connect(btnChooseFile, SIGNAL(clicked()), this, SLOT(onSelectFile()));
 }
 
 void ScannerMainWindow::mnuAboutTriggered()
@@ -168,4 +169,27 @@ void ScannerMainWindow::mnuAboutTriggered()
 
     msg.setText(s);
     msg.exec();
+}
+
+void ScannerMainWindow::onSelectFile()
+{
+    QStringList filters;
+    QString ext = extensionEdit->text();
+
+    if (ext != "*.*") {
+        filters << QString("User defined (%1)").arg(ext);
+    }
+
+    filters << "All files (*.*)";
+
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setDirectory(QDir::homePath());
+    dialog.setNameFilters(filters);
+
+    if (dialog.exec()) {
+        QStringList filenames = dialog.selectedFiles();
+        QString filename = filenames[0];
+        editPath->setText(filename);
+    }
 }

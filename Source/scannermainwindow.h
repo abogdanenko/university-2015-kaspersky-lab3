@@ -49,6 +49,7 @@ class ScannerMainWindow : public QMainWindow
 
 public slots:
     void mnuAboutTriggered();
+    void onSelectFile();
 
 public:
     ScannerMainWindow(QWidget *parent = 0);
