@@ -16,7 +16,7 @@ class ScannerMainWindow : public QMainWindow
     QAction *actClearHistory;
     QAction *actClearLog;
 
-    QWidget *buttonWidget;
+    QWidget *wgtButtons;
     QPushButton *btnSelectFile;
     QPushButton *btnSelectFolder;
     QPushButton *btnCheck;
