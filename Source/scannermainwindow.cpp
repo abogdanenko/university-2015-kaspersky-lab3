@@ -15,21 +15,21 @@ void ScannerMainWindow::initMenu()
     mnuBar = new QMenuBar(centralWidget);
     menuHistory = new QMenu(centralWidget);
     menuRecent = new QMenu(centralWidget);
-    menuHelp = new QMenu(centralWidget);
+    mnuHelp = new QMenu(centralWidget);
     actionClearHistory = new QAction(centralWidget);
     actionClearLog = new QAction(centralWidget);
     actionAbout = new QAction(centralWidget);
 
     mnuBar->addMenu(menuHistory);
-    mnuBar->addMenu(menuHelp);
+    mnuBar->addMenu(mnuHelp);
     menuHistory->addMenu(menuRecent);
     menuHistory->addAction(actionClearHistory);
     menuHistory->addAction(actionClearLog);
-    menuHelp->addAction(actionAbout);
+    mnuHelp->addAction(actionAbout);
 
     menuHistory->setTitle("History");
     menuRecent->setTitle("Recent");
-    menuHelp->setTitle("Help");
+    mnuHelp->setTitle("Help");
     actionClearHistory->setText("Clear scan history");
     actionClearLog->setText("Clear scan log");
     actionAbout->setText("About...");

@@ -11,7 +11,7 @@ class ScannerMainWindow : public QMainWindow
     QMenuBar *mnuBar;
     QMenu *menuHistory;
     QMenu *menuRecent;
-    QMenu *menuHelp;
+    QMenu *mnuHelp;
     QAction *actionAbout;
     QAction *actionClearHistory;
     QAction *actionClearLog;
