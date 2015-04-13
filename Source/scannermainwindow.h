@@ -21,7 +21,7 @@ class ScannerMainWindow : public QMainWindow
     QPushButton *btnSelectFolder;
     QPushButton *btnCheck;
 
-    QGroupBox *actionBox;
+    QGroupBox *gbxActions;
     QRadioButton *rdoAsk;
     QRadioButton *rdoIgnore;
     QRadioButton *rdoDelete;

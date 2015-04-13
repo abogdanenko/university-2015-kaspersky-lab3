@@ -75,18 +75,18 @@ void ScannerMainWindow::initOptions()
 
 void ScannerMainWindow::initAction()
 {
-    actionBox = new QGroupBox(topControls);
+    gbxActions = new QGroupBox(topControls);
     QVBoxLayout *vbox = new QVBoxLayout();
-    rdoAsk = new QRadioButton(actionBox);
-    rdoIgnore = new QRadioButton(actionBox);
-    rdoDelete = new QRadioButton(actionBox);
+    rdoAsk = new QRadioButton(gbxActions);
+    rdoIgnore = new QRadioButton(gbxActions);
+    rdoDelete = new QRadioButton(gbxActions);
 
-    actionBox->setTitle("Action");
+    gbxActions->setTitle("Action");
     rdoAsk->setText("Ask");
     rdoIgnore->setText("Ignore");
     rdoDelete->setText("Delete");
 
-    actionBox->setLayout(vbox);
+    gbxActions->setLayout(vbox);
     vbox->addWidget(rdoAsk);
     vbox->addWidget(rdoIgnore);
     vbox->addWidget(rdoDelete);
@@ -106,7 +106,7 @@ void ScannerMainWindow::initTopControls()
     topControls->setLayout(hbox);
     hbox->addWidget(wgtButtons);
     hbox->addWidget(optionsBox);
-    hbox->addWidget(actionBox);
+    hbox->addWidget(gbxActions);
     hbox->addStretch();
     topControls->setFixedWidth(500);
 }
