@@ -26,7 +26,7 @@ class ScannerMainWindow : public QMainWindow
     QRadioButton *rdoIgnore;
     QRadioButton *rdoDelete;
 
-    QGroupBox *optionsBox;
+    QGroupBox *gbxOptions;
     QLineEdit *edtExtensions;
     QCheckBox *chkRecursive;
 

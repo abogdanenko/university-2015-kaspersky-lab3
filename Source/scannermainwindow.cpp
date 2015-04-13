@@ -56,18 +56,18 @@ void ScannerMainWindow::initButtons()
 
 void ScannerMainWindow::initOptions()
 {
-    optionsBox = new QGroupBox(topControls);
+    gbxOptions = new QGroupBox(topControls);
     QVBoxLayout *vbox = new QVBoxLayout();
-    QLabel *lblExtensions = new QLabel(optionsBox);
-    edtExtensions = new QLineEdit(optionsBox);
-    chkRecursive = new QCheckBox(optionsBox);
+    QLabel *lblExtensions = new QLabel(gbxOptions);
+    edtExtensions = new QLineEdit(gbxOptions);
+    chkRecursive = new QCheckBox(gbxOptions);
 
-    optionsBox->setTitle("Scan Options");
+    gbxOptions->setTitle("Scan Options");
     lblExtensions->setText("Filter by extension");
     edtExtensions->setText("*.*");
     chkRecursive->setText("Scan subdirectories recursively");
 
-    optionsBox->setLayout(vbox);
+    gbxOptions->setLayout(vbox);
     vbox->addWidget(lblExtensions);
     vbox->addWidget(edtExtensions);
     vbox->addWidget(chkRecursive);
@@ -105,7 +105,7 @@ void ScannerMainWindow::initTopControls()
     QHBoxLayout *hbox = new QHBoxLayout();
     topControls->setLayout(hbox);
     hbox->addWidget(wgtButtons);
-    hbox->addWidget(optionsBox);
+    hbox->addWidget(gbxOptions);
     hbox->addWidget(gbxActions);
     hbox->addStretch();
     topControls->setFixedWidth(500);
