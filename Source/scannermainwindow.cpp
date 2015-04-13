@@ -59,17 +59,17 @@ void ScannerMainWindow::initOptions()
     optionsBox = new QGroupBox(topControls);
     QVBoxLayout *vbox = new QVBoxLayout();
     QLabel *lblExtensions = new QLabel(optionsBox);
-    extensionEdit = new QLineEdit(optionsBox);
+    edtExtensions = new QLineEdit(optionsBox);
     chkRecursive = new QCheckBox(optionsBox);
 
     optionsBox->setTitle("Scan Options");
     lblExtensions->setText("Filter by extension");
-    extensionEdit->setText("*.*");
+    edtExtensions->setText("*.*");
     chkRecursive->setText("Scan subdirectories recursively");
 
     optionsBox->setLayout(vbox);
     vbox->addWidget(lblExtensions);
-    vbox->addWidget(extensionEdit);
+    vbox->addWidget(edtExtensions);
     vbox->addWidget(chkRecursive);
 }
 
@@ -175,7 +175,7 @@ void ScannerMainWindow::mnuAboutTriggered()
 void ScannerMainWindow::onSelectFile()
 {
     QStringList filters;
-    QString ext = extensionEdit->text();
+    QString ext = edtExtensions->text();
 
     if (ext != "*.*") {
         filters << QString("User defined (%1)").arg(ext);
