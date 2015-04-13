@@ -39,17 +39,17 @@ void ScannerMainWindow::initMenu()
 void ScannerMainWindow::initButtons()
 {
     buttonWidget = new QWidget(topControls);
-    btnChooseFile = new QPushButton(buttonWidget);
+    btnSelectFile = new QPushButton(buttonWidget);
     btnChooseDir = new QPushButton(buttonWidget);
     btnStart = new QPushButton(buttonWidget);
     QVBoxLayout *vbox = new QVBoxLayout();
 
-    btnChooseFile->setText("Choose File");
+    btnSelectFile->setText("Choose File");
     btnChooseDir->setText("Choose Directory");
     btnStart->setText("Start");
 
     buttonWidget->setLayout(vbox);
-    vbox->addWidget(btnChooseFile);
+    vbox->addWidget(btnSelectFile);
     vbox->addWidget(btnChooseDir);
     vbox->addWidget(btnStart);
 }
@@ -150,7 +150,7 @@ void ScannerMainWindow::Connect()
 {
     connect(actionAbout, SIGNAL(triggered()), this, SLOT(mnuAboutTriggered()));
     connect(actionClearLog, SIGNAL(triggered()), editLog, SLOT(clear()));
-    connect(btnChooseFile, SIGNAL(clicked()), this, SLOT(onSelectFile()));
+    connect(btnSelectFile, SIGNAL(clicked()), this, SLOT(onSelectFile()));
     connect(btnChooseDir, SIGNAL(clicked()), this, SLOT(onSelectFolder()));
 }
 
