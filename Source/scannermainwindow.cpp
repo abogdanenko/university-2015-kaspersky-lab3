@@ -149,6 +149,7 @@ void ScannerMainWindow::initLayout()
 void ScannerMainWindow::Connect()
 {
     connect(actionAbout, SIGNAL(triggered()), this, SLOT(mnuAboutTriggered()));
+    connect(actionClearLog, SIGNAL(triggered()), editLog, SLOT(clear()));
 }
 
 void ScannerMainWindow::mnuAboutTriggered()
