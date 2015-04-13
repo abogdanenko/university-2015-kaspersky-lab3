@@ -37,7 +37,7 @@ class ScannerMainWindow : public QMainWindow
     QLineEdit *edtFileName;
     QTextEdit *edtLog;
 
-    QWidget *centralWidget;
+    QWidget *wgtCentral;
 
     void initMenu();
     void initButtons();

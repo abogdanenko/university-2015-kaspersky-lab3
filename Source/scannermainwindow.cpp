@@ -12,13 +12,13 @@ ScannerMainWindow::~ScannerMainWindow()
 
 void ScannerMainWindow::initMenu()
 {
-    mnuBar = new QMenuBar(centralWidget);
-    mnuHistory = new QMenu(centralWidget);
-    mnuRecent = new QMenu(centralWidget);
-    mnuHelp = new QMenu(centralWidget);
-    actClearHistory = new QAction(centralWidget);
-    actClearLog = new QAction(centralWidget);
-    actAbout = new QAction(centralWidget);
+    mnuBar = new QMenuBar(wgtCentral);
+    mnuHistory = new QMenu(wgtCentral);
+    mnuRecent = new QMenu(wgtCentral);
+    mnuHelp = new QMenu(wgtCentral);
+    actClearHistory = new QAction(wgtCentral);
+    actClearLog = new QAction(wgtCentral);
+    actAbout = new QAction(wgtCentral);
 
     mnuBar->addMenu(mnuHistory);
     mnuBar->addMenu(mnuHelp);
@@ -96,7 +96,7 @@ void ScannerMainWindow::initAction()
 
 void ScannerMainWindow::initTopWidget()
 {
-    wgtTop = new QWidget(centralWidget);
+    wgtTop = new QWidget(wgtCentral);
 
     initButtons();
     initOptions();
@@ -113,25 +113,25 @@ void ScannerMainWindow::initTopWidget()
 
 void ScannerMainWindow::initBottomWidgets()
 {
-    lblFileName = new QLabel(centralWidget);
-    lblLog = new QLabel(centralWidget);
-    edtFileName = new QLineEdit(centralWidget);
-    edtLog = new QTextEdit(centralWidget);
+    lblFileName = new QLabel(wgtCentral);
+    lblLog = new QLabel(wgtCentral);
+    edtFileName = new QLineEdit(wgtCentral);
+    edtLog = new QTextEdit(wgtCentral);
     lblFileName->setText("File / Directory");
     lblLog->setText("Scan log");
 }
 
 void ScannerMainWindow::initCentralWidget()
 {
-    centralWidget = new QWidget(this);
-    setCentralWidget(centralWidget);
+    wgtCentral = new QWidget(this);
+    setCentralWidget(wgtCentral);
 
     initMenu();
     initTopWidget();
     initBottomWidgets();
 
     QVBoxLayout *vbox = new QVBoxLayout();
-    centralWidget->setLayout(vbox);
+    wgtCentral->setLayout(vbox);
     vbox->addWidget(mnuBar);
     vbox->addWidget(wgtTop);
     vbox->addWidget(lblFileName);
