@@ -35,7 +35,6 @@ void ScannerMainWindow::initMenu()
     actAbout->setText("About...");
 }
 
-
 void ScannerMainWindow::initButtons()
 {
     wgtButtons = new QWidget(wgtTop);
