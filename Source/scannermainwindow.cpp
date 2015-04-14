@@ -276,10 +276,12 @@ void ScannerMainWindow::closeEvent(QCloseEvent *event)
 
 void ScannerMainWindow::saveSettings()
 {
-
+    pSettings->setValue("options/extensions", edtExtensions->text());
+    pSettings->setValue("options/recursive", chkRecursive->isChecked());
 }
 
 void ScannerMainWindow::loadSettings()
 {
-
+    edtExtensions->setText(pSettings->value("options/extensions", "*.*").toString());
+    chkRecursive->setChecked(pSettings->value("options/recursive", false).toBool());
 }
