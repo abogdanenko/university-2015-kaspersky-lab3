@@ -32,7 +32,7 @@ void Scanner::check(const QString &targetName,
                     logStr = tr("Skipped ") + logStr;
                     break;
                 case MPOL_ASK:
-                    logStr = (res) ? logstr + tr(" Removed Successfully") : tr("Skipped ") + logStr;
+                    logStr = (res) ? logStr + tr(" Removed Successfully") : tr("Skipped ") + logStr;
                     break;
                 default:
                     break;
