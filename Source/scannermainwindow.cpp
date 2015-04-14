@@ -183,19 +183,9 @@ void ScannerMainWindow::mnuAboutTriggered()
 
 void ScannerMainWindow::onSelectFile()
 {
-    QStringList filters;
-    QString ext = edtExtensions->text();
-
-    if (ext != "*.*") {
-        filters << QString("User defined (%1)").arg(ext);
-    }
-
-    filters << "All files (*.*)";
-
     QFileDialog dialog(this);
     dialog.setFileMode(QFileDialog::ExistingFile);
     dialog.setDirectory(QDir::homePath());
-    dialog.setNameFilters(filters);
 
     if (dialog.exec()) {
         QStringList filenames = dialog.selectedFiles();
