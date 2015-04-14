@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtWidgets>
+#include "scanner.h"
 
 class ScannerMainWindow : public QMainWindow
 {
@@ -38,6 +39,8 @@ class ScannerMainWindow : public QMainWindow
     QTextEdit *edtLog;
 
     QWidget *wgtCentral;
+
+    Scanner scanner;
 
     void initMenu();
     void initButtons();

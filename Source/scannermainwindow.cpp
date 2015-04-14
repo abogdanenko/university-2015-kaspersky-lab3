@@ -152,6 +152,7 @@ void ScannerMainWindow::Connect()
     connect(actClearLog, SIGNAL(triggered()), edtLog, SLOT(clear()));
     connect(btnSelectFile, SIGNAL(clicked()), this, SLOT(onSelectFile()));
     connect(btnSelectFolder, SIGNAL(clicked()), this, SLOT(onSelectFolder()));
+    connect(&scanner, SIGNAL(log(QString)), this, SLOT(onLog(QString)));
 }
 
 void ScannerMainWindow::mnuAboutTriggered()
