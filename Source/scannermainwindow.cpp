@@ -116,6 +116,7 @@ void ScannerMainWindow::initBottomWidgets()
     lblLog = new QLabel(wgtCentral);
     edtFileName = new QLineEdit(wgtCentral);
     edtLog = new QTextEdit(wgtCentral);
+    edtLog->setReadOnly(true);
     lblFileName->setText("File / Directory");
     lblLog->setText("Scan log");
 }
@@ -206,4 +207,10 @@ void ScannerMainWindow::onSelectFolder()
         QString filename = filenames[0];
         edtFileName->setText(filename);
     }
+}
+
+void ScannerMainWindow::onLog(QString aHtmlMessage)
+{
+    edtLog->moveCursor(QTextCursor::End);
+    edtLog->insertHtml(aHtmlMessage);
 }

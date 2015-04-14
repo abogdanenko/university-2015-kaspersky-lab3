@@ -51,6 +51,7 @@ public slots:
     void mnuAboutTriggered();
     void onSelectFile();
     void onSelectFolder();
+    void onLog(QString aHtmlMessage);
 
 public:
     ScannerMainWindow(QWidget *parent = 0);
