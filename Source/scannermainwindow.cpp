@@ -215,6 +215,8 @@ void ScannerMainWindow::onLog(QString aHtmlMessage)
 {
     edtLog->moveCursor(QTextCursor::End);
     edtLog->insertHtml(aHtmlMessage);
+    QString newline = "<br>\n";
+    edtLog->insertHtml(newline);
 }
 
 void ScannerMainWindow::onCheck()
