@@ -31,10 +31,12 @@ void Scanner::check(const QString &targetName,
                 case MPOL_SKIP:
                     logStr = tr("Skipped ") + logStr;
                     break;
+                case MPOL_ASK:
+                    logStr = (res) ? logstr + tr(" Removed Successfully") : tr("Skipped ") + logStr;
+                    break;
                 default:
                     break;
                 }
-
                 emit(logStr);
             }
         }
