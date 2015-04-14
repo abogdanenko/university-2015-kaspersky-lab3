@@ -252,6 +252,7 @@ void ScannerMainWindow::addRecent(QString filename)
     QAction *actLastFileName = new QAction(mnuRecent);
     mnuRecent->addAction(actLastFileName);
     actLastFileName->setText(filename);
+    recentFileNames.append(filename);
     connect(actLastFileName, SIGNAL(triggered()), this, SLOT(onRecent()));
 }
 
@@ -266,6 +267,7 @@ void ScannerMainWindow::onRecent()
 void ScannerMainWindow::onClearHistory()
 {
     mnuRecent->clear();
+    recentFileNames.clear();
 }
 
 void ScannerMainWindow::closeEvent(QCloseEvent *event)
@@ -289,6 +291,7 @@ void ScannerMainWindow::saveSettings()
     }
 
     pSettings->setValue("action", action);
+    pSettings->setValue("history", recentFileNames);
 }
 
 void ScannerMainWindow::loadSettings()
@@ -300,4 +303,9 @@ void ScannerMainWindow::loadSettings()
     rdoIgnore->setChecked(action == "skip");
     rdoDelete->setChecked(action == "remove");
     rdoAsk->setChecked(action == "ask");
+
+    QStringList filenames = pSettings->value("history", QStringList()).toStringList();
+    foreach(QString filename, filenames) {
+        addRecent(filename);
+    }
 }

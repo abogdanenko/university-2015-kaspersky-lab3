@@ -41,6 +41,7 @@ class ScannerMainWindow : public QMainWindow
     QSettings *pSettings;
     QWidget *wgtCentral;
 
+    QStringList recentFileNames;
     Scanner scanner;
 
     void initMenu();
