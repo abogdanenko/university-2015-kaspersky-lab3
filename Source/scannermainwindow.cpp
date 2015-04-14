@@ -230,6 +230,10 @@ void ScannerMainWindow::onCheck()
         policy = MPOL_REMOVE;
     }
 
+    if (rdoAsk->isChecked()) {
+        policy = MPOL_ASK;
+    }
+
     scanner.setPolicy(policy);
     scanner.check(aTargetName, aIsRecursive, aExt);
 }
