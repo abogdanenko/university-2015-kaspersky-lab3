@@ -41,7 +41,7 @@ void ScannerMainWindow::initButtons()
     btnSelectFile = new QPushButton(wgtButtons);
     btnSelectFolder = new QPushButton(wgtButtons);
     btnCheck = new QPushButton(wgtButtons);
-    QVBoxLayout *vbox = new QVBoxLayout();
+    QVBoxLayout *vbox = new QVBoxLayout(wgtButtons);
 
     btnSelectFile->setText("Select File");
     btnSelectFolder->setText("Select Directory");
@@ -56,10 +56,10 @@ void ScannerMainWindow::initButtons()
 void ScannerMainWindow::initOptions()
 {
     gbxOptions = new QGroupBox(wgtTop);
-    QVBoxLayout *vbox = new QVBoxLayout();
     QLabel *lblExtensions = new QLabel(gbxOptions);
     edtExtensions = new QLineEdit(gbxOptions);
     chkRecursive = new QCheckBox(gbxOptions);
+    QVBoxLayout *vbox = new QVBoxLayout(gbxOptions);
 
     gbxOptions->setTitle("Scan Options");
     lblExtensions->setText("Filter by extension");
@@ -75,7 +75,7 @@ void ScannerMainWindow::initOptions()
 void ScannerMainWindow::initAction()
 {
     gbxActions = new QGroupBox(wgtTop);
-    QVBoxLayout *vbox = new QVBoxLayout();
+    QVBoxLayout *vbox = new QVBoxLayout(gbxActions);
     rdoAsk = new QRadioButton(gbxActions);
     rdoIgnore = new QRadioButton(gbxActions);
     rdoDelete = new QRadioButton(gbxActions);
@@ -101,7 +101,7 @@ void ScannerMainWindow::initTopWidget()
     initOptions();
     initAction();
 
-    QHBoxLayout *hbox = new QHBoxLayout();
+    QHBoxLayout *hbox = new QHBoxLayout(wgtTop);
     wgtTop->setLayout(hbox);
     hbox->addWidget(wgtButtons);
     hbox->addWidget(gbxOptions);
@@ -129,7 +129,7 @@ void ScannerMainWindow::initCentralWidget()
     initTopWidget();
     initBottomWidgets();
 
-    QVBoxLayout *vbox = new QVBoxLayout();
+    QVBoxLayout *vbox = new QVBoxLayout(wgtCentral);
     wgtCentral->setLayout(vbox);
     vbox->addWidget(mnuBar);
     vbox->addWidget(wgtTop);
