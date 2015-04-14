@@ -18,18 +18,21 @@ QList<FileInfo *> FileBrowser::getFileList(const QString &TargetName,
         return res;
     }
 
-    res.append(rootInfo);
+    if (rootInfo->getFileInfo().isFile()) {
+        res.append(rootInfo);
+    }
     if (rootInfo->getFileInfo().isDir()) {
         QStack<QString> stack;
+        stack.push(TargetName);
         do {
-            QDir currentDir(TargetName);
+            QDir currentDir = QDir(stack.pop());
             QStringList files = currentDir.entryList(QStringList(Ext), QDir::Files);
             for (auto &it: files) {
-                FileInfo *currentFile = new FileInfo(it);
+                FileInfo *currentFile = new FileInfo(QDir::toNativeSeparators(currentDir.absolutePath() + "/" + it));
                 res.append(currentFile);
             }
             QStringList dirs = currentDir.entryList(QDir::Filter::Dirs);
-            for (auto &it: files) {
+            for (auto &it: dirs) {
                 stack.push_back(it);
             }
         } while (Recursive && !stack.empty());
@@ -43,6 +46,6 @@ QString FileBrowser::getInfo() {
     QString ver = QString(tmpobj.metaObject()->classInfo(0).name()) + ':' +  QString(tmpobj.metaObject()->classInfo(0).value());
     QString year = QString(tmpobj.metaObject()->classInfo(1).name()) + ':' +  QString(tmpobj.metaObject()->classInfo(1).value());
     return tr("%1 %2 \n%3").arg(tmpobj.metaObject()->className())
-           .arg(ver)
-           .arg(year);
+            .arg(ver)
+            .arg(year);
 }
