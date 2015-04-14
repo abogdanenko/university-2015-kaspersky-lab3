@@ -49,6 +49,7 @@ class ScannerMainWindow : public QMainWindow
     void initTopWidget();
     void initBottomWidgets();
     void initCentralWidget();
+    void addRecent(QString filename);
 
 public slots:
     void mnuAboutTriggered();
@@ -56,6 +57,8 @@ public slots:
     void onSelectFolder();
     void onCheck();
     void onLog(QString aHtmlMessage);
+    void onRecent();
+    void onClearHistory();
 
 public:
     ScannerMainWindow(QWidget *parent = 0);

@@ -150,6 +150,7 @@ void ScannerMainWindow::Connect()
 {
     connect(actAbout, SIGNAL(triggered()), this, SLOT(mnuAboutTriggered()));
     connect(actClearLog, SIGNAL(triggered()), edtLog, SLOT(clear()));
+    connect(actClearHistory, SIGNAL(triggered()), this, SLOT(onClearHistory()));
     connect(btnSelectFile, SIGNAL(clicked()), this, SLOT(onSelectFile()));
     connect(btnSelectFolder, SIGNAL(clicked()), this, SLOT(onSelectFolder()));
     connect(btnCheck, SIGNAL(clicked()), this, SLOT(onCheck()));
@@ -236,4 +237,27 @@ void ScannerMainWindow::onCheck()
 
     scanner.setPolicy(policy);
     scanner.check(aTargetName, aIsRecursive, aExt);
+
+    addRecent(aTargetName);
+}
+
+void ScannerMainWindow::addRecent(QString filename)
+{
+    QAction *actLastFileName = new QAction(mnuRecent);
+    mnuRecent->addAction(actLastFileName);
+    actLastFileName->setText(filename);
+    connect(actLastFileName, SIGNAL(triggered()), this, SLOT(onRecent()));
+}
+
+void ScannerMainWindow::onRecent()
+{
+    QObject *sender = QObject::sender();
+    QAction *action = qobject_cast<QAction*>(sender);
+    QString fileName = action->text();
+    edtFileName->setText(fileName);
+}
+
+void ScannerMainWindow::onClearHistory()
+{
+    mnuRecent->clear();
 }
