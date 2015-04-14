@@ -54,6 +54,7 @@ public slots:
     void mnuAboutTriggered();
     void onSelectFile();
     void onSelectFolder();
+    void onCheck();
     void onLog(QString aHtmlMessage);
 
 public:

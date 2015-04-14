@@ -152,6 +152,7 @@ void ScannerMainWindow::Connect()
     connect(actClearLog, SIGNAL(triggered()), edtLog, SLOT(clear()));
     connect(btnSelectFile, SIGNAL(clicked()), this, SLOT(onSelectFile()));
     connect(btnSelectFolder, SIGNAL(clicked()), this, SLOT(onSelectFolder()));
+    connect(btnCheck, SIGNAL(clicked()), this, SLOT(onCheck()));
     connect(&scanner, SIGNAL(log(QString)), this, SLOT(onLog(QString)));
 }
 
@@ -214,4 +215,19 @@ void ScannerMainWindow::onLog(QString aHtmlMessage)
 {
     edtLog->moveCursor(QTextCursor::End);
     edtLog->insertHtml(aHtmlMessage);
+}
+
+void ScannerMainWindow::onCheck()
+{
+    QString aTargetName = edtFileName->text();
+    bool aIsRecursive = chkRecursive->isChecked();
+    QString aExt = edtExtensions->text();
+
+    MalwarePolicy policy = MPOL_SKIP;
+    if (rdoDelete->isChecked()) {
+        policy = MPOL_REMOVE;
+    }
+
+    scanner.setPolicy(policy);
+    scanner.check(aTargetName, aIsRecursive, aExt);
 }
