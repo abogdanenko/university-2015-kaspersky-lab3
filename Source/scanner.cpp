@@ -21,8 +21,8 @@ void Scanner::check(const QString &targetName,
     try {
         for (auto &it: fileLst) {
             if (mSignatureAnalyzer.isMalWare(it)) {
-                bool res = mMalwareHandler.HandleMalware((it)->getFileInfo().absolutePath());
-                QString logStr = (it)->getFileInfo().absolutePath();
+                bool res = mMalwareHandler.HandleMalware((it)->getFileInfo().absoluteFilePath());
+                QString logStr = (it)->getFileInfo().absoluteFilePath();
 
                 switch (mPolicy) {
                 case MPOL_REMOVE:
