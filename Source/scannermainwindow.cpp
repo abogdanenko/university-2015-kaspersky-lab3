@@ -3,6 +3,11 @@
 ScannerMainWindow::ScannerMainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+    QSettings::setDefaultFormat(QSettings::IniFormat);
+    QCoreApplication::setOrganizationName("MSU");
+    QCoreApplication::setApplicationName("SimpleAntivirusScanner");
+
+    pSettings = new QSettings();
 }
 
 ScannerMainWindow::~ScannerMainWindow()
@@ -144,6 +149,7 @@ void ScannerMainWindow::initLayout()
 {
     setWindowTitle("Simple Antivirus Scanner");
     initCentralWidget();
+    loadSettings();
 }
 
 void ScannerMainWindow::Connect()
