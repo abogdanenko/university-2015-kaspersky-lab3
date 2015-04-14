@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtWidgets>
+#include "scanner.h"
 
 class ScannerMainWindow : public QMainWindow
 {
@@ -39,6 +40,8 @@ class ScannerMainWindow : public QMainWindow
 
     QWidget *wgtCentral;
 
+    Scanner scanner;
+
     void initMenu();
     void initButtons();
     void initOptions();
@@ -51,6 +54,7 @@ public slots:
     void mnuAboutTriggered();
     void onSelectFile();
     void onSelectFolder();
+    void onCheck();
     void onLog(QString aHtmlMessage);
 
 public:
