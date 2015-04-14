@@ -278,10 +278,26 @@ void ScannerMainWindow::saveSettings()
 {
     pSettings->setValue("options/extensions", edtExtensions->text());
     pSettings->setValue("options/recursive", chkRecursive->isChecked());
+
+    QString action = "skip";
+    if (rdoDelete->isChecked()) {
+        action = "remove";
+    }
+
+    if (rdoAsk->isChecked()) {
+        action = "ask";
+    }
+
+    pSettings->setValue("action", action);
 }
 
 void ScannerMainWindow::loadSettings()
 {
     edtExtensions->setText(pSettings->value("options/extensions", "*.*").toString());
     chkRecursive->setChecked(pSettings->value("options/recursive", false).toBool());
+
+    QString action = pSettings->value("action").toString();
+    rdoIgnore->setChecked(action == "skip");
+    rdoDelete->setChecked(action == "remove");
+    rdoAsk->setChecked(action == "ask");
 }
