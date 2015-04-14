@@ -261,3 +261,19 @@ void ScannerMainWindow::onClearHistory()
 {
     mnuRecent->clear();
 }
+
+void ScannerMainWindow::closeEvent(QCloseEvent *event)
+{
+    saveSettings();
+    event->accept();
+}
+
+void ScannerMainWindow::saveSettings()
+{
+
+}
+
+void ScannerMainWindow::loadSettings()
+{
+
+}

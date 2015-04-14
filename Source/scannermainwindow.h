@@ -38,6 +38,7 @@ class ScannerMainWindow : public QMainWindow
     QLineEdit *edtFileName;
     QTextEdit *edtLog;
 
+    QSettings *pSettings;
     QWidget *wgtCentral;
 
     Scanner scanner;
@@ -50,6 +51,8 @@ class ScannerMainWindow : public QMainWindow
     void initBottomWidgets();
     void initCentralWidget();
     void addRecent(QString filename);
+    void loadSettings();
+    void saveSettings();
 
 public slots:
     void mnuAboutTriggered();
@@ -59,6 +62,9 @@ public slots:
     void onLog(QString aHtmlMessage);
     void onRecent();
     void onClearHistory();
+
+protected:
+    void closeEvent(QCloseEvent *event);
 
 public:
     ScannerMainWindow(QWidget *parent = 0);
