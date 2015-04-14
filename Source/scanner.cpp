@@ -37,12 +37,12 @@ void Scanner::check(const QString &targetName,
                 default:
                     break;
                 }
-                emit(logStr);
+                emit(log(logStr));
             }
         }
     }
     catch (GeneralException &e) {
-        emit(e.getMessage());
+        emit(log(e.getMessage()));
     }
 
     for (auto &it: fileLst) {
