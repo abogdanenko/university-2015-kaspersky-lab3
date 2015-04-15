@@ -1,4 +1,5 @@
 #include <QFile>
+#include <QDateTime>
 #include "scanner.h"
 #include "filebrowser.h"
 QString Scanner::dbPath = "main.mdb";
@@ -19,6 +20,7 @@ void Scanner::check(const QString &targetName,
 
     QList<FileInfo *> fileLst = FileBrowser::getFileList(targetName, isRecursive, ext);
     int infectedCount = 0;
+    emit(log(tr("Scanning started %1").arg(QDateTime::currentDateTime().toString())));
     try {
         int cnt = 0;
         for (auto &it: fileLst) {
@@ -52,6 +54,7 @@ void Scanner::check(const QString &targetName,
         emit(log(tr("Scanning Aborted")));
         emit(log(e.getMessage()));
     }
+    emit(log(tr("Scanning finished %1").arg(QDateTime::currentDateTime().toString())));
     emit(log(tr("Scanner Log Infected %1/%2").arg(infectedCount).arg(fileLst.size())));
 
 
