@@ -14,9 +14,6 @@ QList<FileInfo *> FileBrowser::getFileList(const QString &TargetName,
                                            const QString &Ext) {
     QList<FileInfo *> res;
     FileInfo *rootInfo = new FileInfo(TargetName);
-    if (rootInfo->getFileInfo().isFile() && !wildCardMatch(TargetName, Ext)) {
-        return res;
-    }
 
     if (rootInfo->getFileInfo().isFile()) {
         res.append(rootInfo);
@@ -26,6 +23,7 @@ QList<FileInfo *> FileBrowser::getFileList(const QString &TargetName,
         stack.push(TargetName);
         do {
             QDir currentDir = QDir(stack.pop());
+            //            stack.pop();
             QStringList files = currentDir.entryList(QStringList(Ext), QDir::Files);
             for (auto &it: files) {
                 FileInfo *currentFile = new FileInfo(QDir::toNativeSeparators(currentDir.absolutePath() + "/" + it));
@@ -33,7 +31,9 @@ QList<FileInfo *> FileBrowser::getFileList(const QString &TargetName,
             }
             QStringList dirs = currentDir.entryList(QDir::Filter::Dirs);
             for (auto &it: dirs) {
-                stack.push_back(it);
+                if (it != "." && it != "..") {
+                    stack.push_back(QDir::toNativeSeparators(currentDir.absolutePath() + "/" + it));
+                }
             }
         } while (Recursive && !stack.empty());
     }

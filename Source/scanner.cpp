@@ -18,9 +18,14 @@ void Scanner::check(const QString &targetName,
 
 
     QList<FileInfo *> fileLst = FileBrowser::getFileList(targetName, isRecursive, ext);
+    int infectedCount = 0;
     try {
+        int cnt = 0;
         for (auto &it: fileLst) {
+            cnt++;
+            emit(log(tr("Scanning %1").arg(it->getFileInfo().absoluteFilePath())));
             if (mSignatureAnalyzer.isMalWare(it)) {
+                infectedCount++;
                 bool res = mMalwareHandler.HandleMalware((it)->getFileInfo().absoluteFilePath());
                 QString logStr = (it)->getFileInfo().absoluteFilePath();
 
@@ -38,12 +43,17 @@ void Scanner::check(const QString &targetName,
                     break;
                 }
                 emit(log(logStr));
+            } else {
+                emit(log(tr("File is OK!")));
             }
         }
     }
     catch (GeneralException &e) {
+        emit(log(tr("Scanning Aborted")));
         emit(log(e.getMessage()));
     }
+    emit(log(tr("Scanner Log Infected %1/%2").arg(infectedCount).arg(fileLst.size())));
+
 
     for (auto &it: fileLst) {
         delete it;

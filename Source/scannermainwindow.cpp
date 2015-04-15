@@ -210,6 +210,7 @@ void ScannerMainWindow::onSelectFolder()
 
 void ScannerMainWindow::onLog(QString aHtmlMessage)
 {
+    qApp->processEvents();
     edtLog->moveCursor(QTextCursor::End);
     edtLog->insertHtml(aHtmlMessage);
     QString newline = "<br>\n";
